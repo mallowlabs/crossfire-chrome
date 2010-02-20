@@ -1,0 +1,17 @@
+{
+  "content_scripts": [
+    {
+      "js": [ "crossfire-chrome.js" ],
+      "run_at": "document_end",
+      "matches": [ "http://*/*", "https://*/*" ]
+    }
+  ],
+  "version": "0.2.1",
+  "name": "CrossFire for Chrome",
+  "description": "CrossFire(Opera Spatial Navigation) for Chrome.",
+  "icons": { "16": "16x16.png",
+             "32": "32x32.png",
+             "48": "32x32.png",
+            "128": "32x32.png"
+           }
+}
