@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         crossfire-chrom.js
+// @name         crossfire-chrome.js
 // @namespace    http://d.hatena.ne.jp/mallowlabs/
 // ==/UserScript==
 
@@ -9,16 +9,16 @@ var defaultBindings = { DOWN: 40, UP: 38, LEFT: 37, RIGHT: 39 }
 var viBindings = { DOWN: 74, UP: 75, LEFT: 72, RIGHT: 76 }
 var KEY = {};
 
-chrome.extension.sendRequest({getconfig: true},
-function(response) {
+chrome.extension.sendRequest({name: "getPreferences"},
+  function(response) {
     binding = response.mode;
     if (!binding) { binding = "default"; }
     switch(binding) {
     case "vi":
-        KEY = viBindings;
-        break;
+      KEY = viBindings;
+      break;
     default:
-        KEY = defaultBindings;
+      KEY = defaultBindings;
     }
     KEY.MODIFIER = 16;
 
@@ -30,7 +30,7 @@ function(response) {
       xlinks = []
       ylinks = []
       var ns = document.getElementsByTagName("a") // TODO use XPath
-      for (var i = 0,l = ns.length; i < l;i++) {
+      for (var i = 0,l = ns.length; i < l; i++) {
         if (!(ns[i].hasAttribute("href") && isVisible(ns[i]))) {
           continue; // link which has no href or is not visible should be ignore
         }
@@ -63,20 +63,20 @@ function(response) {
         if (direction == 1 && activeRect.right < targetRect.right) {  // right
           if (targetRect.bottom >= activeRect.top && targetRect.top <= activeRect.bottom) {
         return (targetRect.left - activeRect.right);
-          } else if ( (targetRect.bottom < activeRect.top) &&  // ue
+          } else if ( (targetRect.bottom < activeRect.top) &&  // up
         (targetRect.left - activeRect.right)  > (activeRect.top - targetRect.bottom)) {
         return (targetRect.left - activeRect.right) + (activeRect.top - targetRect.bottom);
-          } else if ( (targetRect.top > activeRect.bottom) && // shita
+          } else if ( (targetRect.top > activeRect.bottom) && // down
         (targetRect.left - activeRect.right) >  (targetRect.top - activeRect.bottom)) {
         return (targetRect.left - activeRect.right) + (targetRect.top - activeRect.bottom);
           }
         } else if (direction == -1 &&  targetRect.left < activeRect.left) { // left
           if (targetRect.bottom >= activeRect.top && targetRect.top <= activeRect.bottom) {
         return (activeRect.left - targetRect.right);
-          } else if ( (targetRect.bottom < activeRect.top) && // ue
+          } else if ( (targetRect.bottom < activeRect.top) && // up
         (activeRect.left - targetRect.right) > (activeRect.top - targetRect.bottom)) {
         return (activeRect.left - targetRect.right) +  (activeRect.top - targetRect.bottom);
-          } else if ( (targetRect.top > activeRect.bottom ) && // shita
+          } else if ( (targetRect.top > activeRect.bottom ) && // down
         (activeRect.left - targetRect.right) > (targetRect.top - activeRect.bottom)) {
         return (activeRect.left - targetRect.right) +(targetRect.top - activeRect.bottom);
           }
@@ -85,20 +85,20 @@ function(response) {
         if (direction == 1 && activeRect.bottom < targetRect.bottom) {  // down
           if (activeRect.left <= targetRect.right && targetRect.left <= activeRect.right) {
         return (targetRect.top - activeRect.bottom);
-          } else if ( (targetRect.right < activeRect.left) && // hidari
+          } else if ( (targetRect.right < activeRect.left) && // left
         (activeRect.left - targetRect.right) < (targetRect.top - activeRect.bottom)) {
         return (targetRect.top - activeRect.bottom) + (activeRect.left - targetRect.right);
-          } else if ( (targetRect.left > activeRect.right) && // migi
+          } else if ( (targetRect.left > activeRect.right) && // right
         (targetRect.left - activeRect.right) < (targetRect.top - activeRect.bottom)) {
         return (targetRect.top - activeRect.bottom) + (targetRect.left - activeRect.right);
           }
         }else if (direction == -1 &&  targetRect.top < activeRect.top) {  // up
           if (targetRect.right >= activeRect.left && targetRect.left <= activeRect.right) {
         return (activeRect.top - targetRect.bottom);
-          } else if ( (targetRect.right < activeRect.left) && // hidari
+          } else if ( (targetRect.right < activeRect.left) && // left
         (activeRect.left - targetRect.right) < (activeRect.top - targetRect.bottom)) {
         return (activeRect.top - targetRect.bottom) + (activeRect.left - targetRect.right);
-          } else if ( (targetRect.left > activeRect.right) && // migi
+          } else if ( (targetRect.left > activeRect.right) && // right
         (targetRect.left - activeRect.right) < (activeRect.top - targetRect.bottom)) {
         return (activeRect.top - targetRect.bottom) + (targetRect.left - activeRect.right) ;
           }
@@ -171,26 +171,26 @@ function(response) {
           break;
         case KEY.DOWN:
           if (e.shiftKey) {
-        navigateDown();
-        e.preventDefault();
+            navigateDown();
+            e.preventDefault();
           }
           break;
         case KEY.UP:
           if (e.shiftKey) {
-        navigateUp();
-        e.preventDefault();
+            navigateUp();
+            e.preventDefault();
           }
           break;
         case KEY.RIGHT:
           if (e.shiftKey) {
-        navigateRight();
-        e.preventDefault();
+            navigateRight();
+            e.preventDefault();
           }
           break;
         case KEY.LEFT:
           if (e.shiftKey) {
-        navigateLeft();
-        e.preventDefault();
+            navigateLeft();
+            e.preventDefault();
           }
           break;
         default:
@@ -202,6 +202,6 @@ function(response) {
         collectRects();
       }
     }, false);
-   })
+  });
 })(document);
 

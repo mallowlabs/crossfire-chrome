@@ -1,0 +1,80 @@
+<html>
+  <head>
+  <title>ChrossFire - Options</title>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+      color: #444;
+    }
+    h1 {
+      text-shadow: 2px 2px 2px #999;
+      font-size: 1.6em;
+    }
+    h2 {
+      border-bottom: 1px solid #777;
+      border-left: 18px solid #777;
+      padding-left: 10px;
+      font-size: 1.2em;
+    }
+    div.content {
+      margin-left: 10px;
+    }
+    div#header {
+      margin-bottom: 2em;
+    }
+    div#preference {
+      margin-bottom: 2em;
+    }
+    span#status {
+      background-color : #ffff8d;
+    }
+  </style>
+  <script type="text/javascript">
+    function save_options()
+    {
+      var select = document.getElementById("mode");
+      localStorage["mode"] = select.value;
+      var status = document.getElementById("status");
+      status.innerHTML = "Settings have been saved.";
+      setTimeout(function(e) {
+        status.innerHTML = "";
+      }, 1500);
+      return false;
+    }
+
+    function restore_options()
+    {
+      var mode = localStorage["mode"];
+      if (!mode) { return; }
+      var select = document.getElementById("mode");
+      select.value = mode;
+    }
+  </script>
+  </head>
+  <body onload="restore_options()">
+    <div id="header">
+      <h1>CrossFire - Options</h1>
+    </div>
+    <div id="preference">
+      <h2>Preferences</h2>
+      <div class="content">
+        <form>
+          <label for="mode">Keybindings: </label>
+          <select id="mode">
+            <option value="default">Arrow Keys</option>
+            <option value="vi">Vi Like</option>
+          </select>
+          <button onclick="return save_options()">Save</button>
+          <span id="status"></span>
+        </form>
+      </div>
+    </div>
+    <div id="about">
+     <h2>Repository</h2>
+     <div class="content">
+       This extension is an open source software.<br>
+       <a href="http://github.com/mallowlabs/crossfire-chrome/">CrossFire on github</a>
+     </div>
+   </div>
+  </body>
+</html>
