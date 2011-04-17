@@ -1,4 +1,4 @@
-CrossFire for Chrome allows you to move to the next link with a keyboard.
+CrossFire for Google Chrome™ allows you to move to the next link with a keyboard.
 This method is called "Spatial Navigation" in Opera and "CrossFire" in Firefox Addons.
 
 Usage:
@@ -11,6 +11,7 @@ Usage:
 History:
  0.2.3:
   highlight by extension
+  rename extension name
  0.2.2:
   option page to change keybindings
  0.2.1:
