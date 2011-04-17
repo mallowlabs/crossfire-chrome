@@ -6,14 +6,14 @@
       "matches": [ "http://*/*", "https://*/*" ]
     }
   ],
-  "version": "0.2.2",
+  "version": "0.2.3",
   "name": "CrossFire for Chrome",
   "options_page": "options.html",
   "background_page": "background.html",
   "description": "CrossFire (Opera Spatial Navigation) for Chrome.",
   "icons": { "16": "16x16.png",
              "32": "32x32.png",
-             "48": "32x32.png",
-            "128": "32x32.png"
+             "48": "48x48.png",
+            "128": "48x48.png"
            }
 }

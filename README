@@ -9,6 +9,8 @@ Usage:
  Enter: navigate the focused link
 
 History:
+ 0.2.3:
+  highlight by extension
  0.2.2:
   option page to change keybindings
  0.2.1:
