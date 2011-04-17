@@ -25,8 +25,9 @@ chrome.extension.sendRequest({name: "getPreferences"},
     var xlinks = [];
     var ylinks = [];
     var modifierPressed = false;
+    var CROSSFIRE_CHROME_FOCUS = "crossfire-chrome-focus";
 
-    addStyle("a:focus {outline: 2px solid #6baee6;}");
+    addStyle(".crossfire-chrome-focus:focus {outline: 2px solid #6baee6;}");
 
     function addStyle(css) {
       var heads = document.getElementsByTagName("head");
@@ -143,8 +144,17 @@ chrome.extension.sendRequest({name: "getPreferences"},
         }
       }
       if (nearestNode) {
-        nearestNode.focus();
+        focus(nearestNode);
       }
+    }
+
+    function focus(node) {
+      node.classList.add(CROSSFIRE_CHROME_FOCUS);
+      var listener = node.addEventListener('blur', function(e) {
+        node.classList.remove(CROSSFIRE_CHROME_FOCUS);
+        node.removeEventListener(listener);
+      }, false);
+      node.focus();
     }
 
     function navigateRight() {
