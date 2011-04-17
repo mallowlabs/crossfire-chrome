@@ -11,7 +11,7 @@ var KEY = {};
 
 chrome.extension.sendRequest({name: "getPreferences"},
   function(response) {
-    binding = response.mode;
+    var binding = response.mode;
     if (!binding) { binding = "default"; }
     switch(binding) {
     case "vi":
