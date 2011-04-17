@@ -26,6 +26,17 @@ chrome.extension.sendRequest({name: "getPreferences"},
     var ylinks = [];
     var modifierPressed = false;
 
+    addStyle("a:focus {outline: 2px solid #6baee6;}");
+
+    function addStyle(css) {
+      var heads = document.getElementsByTagName("head");
+      if (heads.length == 0) { return; }
+      var node = document.createElement("style");
+      node.type = "text/css";
+      node.appendChild(document.createTextNode(css));
+      heads[0].appendChild(node);
+    }
+
     function collectRects() {
       xlinks = []
       ylinks = []
