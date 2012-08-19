@@ -29,29 +29,9 @@
       background-color : #ffff8d;
     }
   </style>
-  <script type="text/javascript">
-    function save_options()
-    {
-      var select = document.getElementById("mode");
-      localStorage["mode"] = select.value;
-      var status = document.getElementById("status");
-      status.innerHTML = "Settings have been saved.";
-      setTimeout(function(e) {
-        status.innerHTML = "";
-      }, 1500);
-      return false;
-    }
-
-    function restore_options()
-    {
-      var mode = localStorage["mode"];
-      if (!mode) { return; }
-      var select = document.getElementById("mode");
-      select.value = mode;
-    }
-  </script>
+  <script type="text/javascript" src="options.js"></script>
   </head>
-  <body onload="restore_options()">
+  <body>
     <div id="header">
       <h1>CrossFire - Options</h1>
     </div>
@@ -64,7 +44,7 @@
             <option value="default">Arrow Keys</option>
             <option value="vi">Vi Like</option>
           </select>
-          <button onclick="return save_options()">Save</button>
+          <button id="button">Save</button>
           <span id="status"></span>
         </form>
       </div>

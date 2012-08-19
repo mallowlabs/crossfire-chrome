@@ -1,4 +1,6 @@
 {
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "content_scripts": [
     {
       "js": [ "crossfire-chrome.js" ],
@@ -6,10 +8,13 @@
       "matches": [ "http://*/*", "https://*/*" ]
     }
   ],
-  "version": "0.2.3",
+  "version": "0.2.4",
   "name": "CrossFire for Google Chrome™",
   "options_page": "options.html",
-  "background_page": "background.html",
+  "background": {
+    "script" : "background.js",
+    "page" : "background.html"
+  },
   "description": "CrossFire (Opera Spatial Navigation) for Chrome.",
   "icons": { "16": "16x16.png",
              "32": "32x32.png",

@@ -1,17 +1,5 @@
 <html>
   <head>
-  <script type="text/javascript">
-    chrome.extension.onRequest.addListener(
-      function(request, sender, sendResponse) {
-        switch (request.name) {
-        case "getPreferences":
-          var value = localStorage["mode"];
-          if (!value) { value = "default"; };
-          sendResponse({mode: value});
-          break;
-        }
-      }
-    );
-  </script>
+  <script type="text/javascript" src="background.js"></script>
   </head>
 </html>
