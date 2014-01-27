@@ -9,6 +9,8 @@ Usage:
  Enter: navigate the focused link
 
 History:
+ 0.2.5:
+  add ignoring Content editable documents (thanks github.com/takuya!)
  0.2.4:
   update manifest version
  0.2.3:
