@@ -171,7 +171,8 @@ chrome.extension.sendRequest({name: "getPreferences"},
     }
     document.addEventListener('keyup', function(e) {
       if (document.activeElement.tagName == "INPUT"
-       || document.activeElement.tagName == "TEXTAREA") {
+       || document.activeElement.tagName == "TEXTAREA"
+       || document.activeElement.contentEditable == "true" ) {
          return; // ignore
        }
        switch(e.keyCode) {
@@ -182,7 +183,8 @@ chrome.extension.sendRequest({name: "getPreferences"},
     }, false);
     document.addEventListener('keydown', function(e) {
       if (document.activeElement.tagName == "INPUT"
-       || document.activeElement.tagName == "TEXTAREA") {
+       || document.activeElement.tagName == "TEXTAREA"
+       || document.activeElement.contentEditable == "true" ) {
          return; // ignore
        }
       switch(e.keyCode) {
