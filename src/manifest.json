@@ -8,7 +8,7 @@
       "matches": [ "http://*/*", "https://*/*" ]
     }
   ],
-  "version": "0.2.5",
+  "version": "0.2.6",
   "name": "CrossFire for Google Chrome™",
   "options_page": "options.html",
   "background": {
