@@ -152,7 +152,7 @@ chrome.extension.sendRequest({name: "getPreferences"},
       node.classList.add(CROSSFIRE_CHROME_FOCUS);
       var listener = node.addEventListener('blur', function(e) {
         node.classList.remove(CROSSFIRE_CHROME_FOCUS);
-        node.removeEventListener(listener);
+        node.removeEventListener('blur', listener);
       }, false);
       node.focus();
     }
